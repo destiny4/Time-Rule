@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "WNDialog": "../../../components/dialog/dialog"
+  },
+  "navigationBarTitleText":"时间尺",
+  "navigationBarBackgroundColor": "#000",
+  "navigationBarTextStyle": "white"
+}

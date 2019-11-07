@@ -1,0 +1,43 @@
+<view class="my-dialog" hidden="{{!showDialog}}">
+  <view class="my-mask" catchtouchmove catchtap='_maskTap'>
+    <view class="my-container" catchtap='_alertTap' >
+
+        <view class="content">
+
+          <!-- 计划内容 -->
+          <view class="lable">计划内容</view>
+          <textarea value='{{content.plan}}' class='textarea' auto-focus placeholder="召唤师,来这添加你的计划吧..." bindblur="_planBlur" />
+          <!-- 计划内容 -->
+
+            <!-- 计划时间 -->
+            <view class='time'>
+                <view class='beginTime'>
+                  <view class="lable">开始时间</view>
+                  <picker mode="time" value="{{content.beginTime}}" start="{{nowTime}}" bindchange="_beginTimeChange">
+                    <view class="time-input">{{content.beginTime}}</view>
+                  </picker>
+                </view>
+                <view class='linkText'>=></view>
+                <view class='endTime'>
+                  <view class="lable">结束时间</view>
+                  <picker mode="time" value="{{content.endTime}}" start="{{nowTime}}" bindchange="_endTimeChange">
+                    <view class="time-input">{{content.endTime}}</view>
+                  </picker>
+                </view>
+                <image class='time-arrow' src='/images/arrow.png'></image>
+            </view>
+             <!-- 计划时间 -->
+
+          <!-- 提醒 -->
+          <view class="lable">提醒</view>
+           <picker mode="time" class='remind' value="{{content.remindTime}}" start="{{nowTime}}" bindchange="_remindTimeChange">
+                <view class="remind-time-input">{{content.remindTime}}</view>
+           </picker>
+           <image class='remind-arrow' src='/images/arrow.png'></image>
+          <!-- 提醒 -->  
+
+        </view>
+     <image class='btn_ok' src='{{_imageUrl}}' bindtap="_confirm"></image>
+    </view>
+  </view>
+</view>

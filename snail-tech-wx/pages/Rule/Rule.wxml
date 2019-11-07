@@ -1,0 +1,86 @@
+<!--pages/Rule/Rule.wxml-->
+
+<!-- 整体背景图片 -->
+<image src='/images/bg@3x.jpg' class='main'></image>
+<!-- 整体背景图片 -->
+
+<!-- 新增按钮 -->
+<image src='/images/add.png' class='btn_add' bindtap='btnTap'></image>
+<!-- 新增按钮 -->
+
+
+
+
+<view id='content' class='content' style="width:{{windowWidth}}px;height:{{useHeight}}px">
+<!-- 左边计划页 -->
+<canvas canvas-id='left' class='leftTips' style="width:{{leftTipsWidth}}px;height:{{useHeight}}px"
+bindtap="leftTipsTap" bindlongtap='leftTipsLongTap'
+/>
+<!-- 左边计划页 -->
+
+<!-- 右边计划页 -->
+<canvas canvas-id='right' class='rightTips' style="width:{{rightTipsWidth}}px;height:{{useHeight}}px" 
+bindtap='rightTipsTap' bindlongtap='rightTipsLongTap'
+/>
+<!-- 右边计划页 -->
+<!-- 时间尺 -->
+<canvas canvas-id='rule' style='border:none;left:{{leftTipsWidth}}px;width:40px;height:{{useHeight}}px'/>
+<!-- 时间尺 -->
+</view>
+
+<!-- 顶部信息栏 -->
+<cover-view class='top-content' style="background:url('/images/bg@3x.jpg');background-color:black;">
+  <button style="background:url('/images/bg@3x.jpg');color:white"
+    wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    <cover-view wx:else>
+      <cover-image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></cover-image>
+      <cover-view class="userinfo-nickname">{{userInfo.nickName}}</cover-view>
+      <cover-view class="motto">{{motto}}</cover-view>
+    </cover-view>
+    <cover-view  class="data-input" style='display:inline-block;left:{{pickerLeft-60}}px'>
+
+      <cover-view style='display:inline-block' bindtap='lastDay'>
+        <cover-view style='font-size:16px;margin-right:10px;color:#ffffff'>上一天</cover-view>
+      </cover-view>
+
+      <cover-view style='display:inline-block'>
+        <picker  mode="date" value="{{date}}" bindchange="bindDateChange">
+          <cover-view style='font-size:16px;color:#00CA9D'>{{showDate}}</cover-view>
+        </picker>
+      </cover-view>
+     
+      <cover-view style='display:inline-block' bindtap='nextDay'>
+        <cover-view style='font-size:16px;margin-left:10px;color:#ffffff'>下一天</cover-view>
+      </cover-view>
+      
+    </cover-view>
+  <!-- 完成度 -->
+    <canvas disable-scroll='true' style='left:{{left}}px' canvas-id='complete' class='canvas-complete' bindtouchstart='disablescroll' bindtouchend='disablescroll' bindtouchmove='disablescroll' />
+    <cover-image class='ccc' src='{{filePath}}' mode="cover"></cover-image>
+  <!-- 完成度 -->
+<!-- 顶部信息栏 -->
+</cover-view>
+
+
+  <!-- 计划弹窗 -->
+<!-- <WNDialog  wx:if="{{dialogContent}}" 
+      id="dialog"
+      title="请确认资产项目信息"
+      confirmText="确定"
+      cancelText="取消"
+      bindcancel="handleCancelDialog"
+      bindconfirm="handleConfirmDialog">
+</WNDialog>
+<WNDialog  wx:else 
+      id="dialog"
+      title="请确认资产项目信息"
+      confirmText="确定"
+      cancelText="取消"
+      content="{{dialogContent}}"
+      bindcancel="handleCancelDialog"
+      bindconfirm="handleConfirmDialog">
+</WNDialog> -->
+<!-- 计划弹窗 -->
+
+
+
